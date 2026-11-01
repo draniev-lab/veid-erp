@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_monerp_farm_parcel,access.monerp.farm.parcel,model_monerp_farm_parcel,monerp_core.group_monerp_user,1,1,1,1
+access_monerp_crop_treatment,access.monerp.crop.treatment,model_monerp_crop_treatment,monerp_core.group_monerp_user,1,1,1,1
+

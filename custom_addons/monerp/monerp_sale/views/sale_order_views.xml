@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_monerp" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.monerp</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_approve_monerp_discount" string="Approuver Dérogations (Remise/Marge/Crédit)" type="object" class="btn-warning" invisible="monerp_discount_approved and monerp_margin_approved and monerp_credit_risk_approved" groups="monerp_core.group_monerp_admin"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Conditions &amp; Marges MonErp" name="monerp_sale_conditions">
+                    <group>
+                        <group string="Validation, Remises &amp; Marges">
+                            <field name="monerp_max_discount"/>
+                            <field name="monerp_discount_approved"/>
+                            <field name="monerp_estimated_margin_percent" widget="progressbar"/>
+                            <field name="monerp_margin_approved"/>
+                            <field name="monerp_credit_risk_approved"/>
+                        </group>
+                        <group string="Priorité &amp; Analytique">
+                            <field name="monerp_delivery_priority"/>
+                            <field name="monerp_analytic_account_id"/>
+                            <field name="monerp_commercial_conditions" placeholder="Spécifiez les conditions particulières..."/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

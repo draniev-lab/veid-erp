@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Claude avec Puter.js</title>
+  <script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+  <h1>Tester Claude dans MonErp</h1>
+
+  <input id="question" value="Explique-moi ce qu'est un ERP."
+         style="width:320px">
+  <button id="send">Envoyer</button>
+
+  <pre id="result">La réponse apparaîtra ici.</pre>
+
+  <script>
+    const button = document.getElementById('send');
+    const result = document.getElementById('result');
+
+    button.addEventListener('click', async () => {
+      const question = document.getElementById('question').value.trim();
+
+      if (!question) return;
+
+      button.disabled = true;
+      result.textContent = 'Claude réfléchit...';
+
+      try {
+        const response = await puter.ai.chat(question, {
+          model: 'claude-sonnet-4-6'
+        });
+
+        const content = response.message?.content;
+        result.textContent = Array.isArray(content)
+          ? content.map(part => part.text || '').join('\n')
+          : JSON.stringify(response, null, 2);
+      } catch (error) {
+        result.textContent = 'Erreur : ' + error.message;
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

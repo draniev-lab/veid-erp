@@ -1,0 +1,11 @@
+[project]
+name = "odoo-addons-oca-rest-framework"
+version = "19.0.20260401.0"
+dependencies = [
+    "odoo-addon-fastapi==19.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 19.0",
+]

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_monerp_l10n" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.monerp.l10n</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Conformité Fiscale &amp; Légal VEID" name="monerp_fiscal_compliance">
+                    <group>
+                        <group string="Identifiants Fiscaux &amp; Régime">
+                            <field name="monerp_nif"/>
+                            <field name="monerp_rccm"/>
+                            <field name="monerp_fiscal_regime"/>
+                        </group>
+                        <group string="Retenue à la Source &amp; Exonération">
+                            <field name="monerp_withholding_tax_rate"/>
+                            <field name="monerp_tax_exemption_cert"/>
+                            <field name="monerp_tax_exemption_expiry"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

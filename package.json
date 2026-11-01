@@ -1,0 +1,23 @@
+{
+  "name": "monerp",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">   <img src=\"custom_addons/monerp/monerp_core/static/src/img/veid_logo_horizontal.png\" alt=\"VEID Enterprise Logo\" width=\"340\"/> </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run && playwright test",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "test:all": "vitest run && playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@heyputer/puter.js": "^2.6.4"
+  }
+}

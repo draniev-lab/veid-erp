@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>VEID Field - Opérations Terrain & Mode Déconnecté</title>
+  <meta name="theme-color" content="#081323">
+  <meta name="description" content="Application terrain déconnectée VEID Enterprise pour le suivi de chantier BTP et la pesée agricole hors-ligne.">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" href="/monerp_core/static/src/img/veid_logo_futuristic.png">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand-section">
+      <img src="/monerp_core/static/src/img/veid_logo_horizontal.png" alt="VEID Enterprise" class="brand-logo" onerror="this.style.display='none'">
+      <span class="brand-title">VEID Field</span>
+    </div>
+    <div id="network-badge" class="network-badge online">
+      <span class="network-dot"></span>
+      <span id="network-label">En Ligne</span>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-tab="btp" id="tab-btn-btp">
+      <span>🏗️</span>
+      <span>Chantier BTP</span>
+    </button>
+    <button class="tab-btn" data-tab="agro" id="tab-btn-agro">
+      <span>🌾</span>
+      <span>Agro-Pesée</span>
+    </button>
+    <button class="tab-btn" data-tab="queue" id="tab-btn-queue">
+      <span>🔄</span>
+      <span>Synchronisation <b id="tab-queue-badge" style="color: #FBBF24; display: none;"></b></span>
+    </button>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="app-main">
+
+    <!-- Notification / Toast -->
+    <div id="feedback-alert" class="alert-feedback"></div>
+
+    <!-- PANEL 1: Chantier BTP -->
+    <section id="tab-btp" class="tab-panel active">
+      <div class="bento-card">
+        <div class="card-header">
+          <div class="card-title">🏗️ Constat d'Avancement Chantier</div>
+          <span style="font-size: 0.75rem; color: var(--cyan-primary); font-weight: 600;">Mode Terrain</span>
+        </div>
+
+        <form id="form-btp">
+          <div class="form-group">
+            <label for="btp-site-select">Chantier BTP Actif</label>
+            <select id="btp-site-select" required>
+              <option value="">Chargement des chantiers...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="btp-lot-select">Lot / Corps d'État BTP</label>
+            <select id="btp-lot-select">
+              <option value="">Lot général du chantier</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="btp-progress-input">Nouvel Avancement Réalisé (%)</label>
+            <input type="number" id="btp-progress-input" min="0" max="100" step="0.5" placeholder="Ex: 65.0" required>
+          </div>
+
+          <div class="form-group">
+            <label for="btp-notes-input">Rapport de Visite / Observations</label>
+            <textarea id="btp-notes-input" rows="3" placeholder="Ex: Coulage dalle niveau R+1 achevé. Équipe ferraillage sur place..."></textarea>
+          </div>
+
+          <button type="submit" id="btn-submit-btp" class="btn btn-primary">
+            <span>💾</span> Enregistrer le Relevé BTP
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- PANEL 2: Agro-Business & Pesée Récolte -->
+    <section id="tab-agro" class="tab-panel">
+      <div class="bento-card">
+        <div class="card-header">
+          <div class="card-title">🌾 Pesée & Récolte Parcelle</div>
+          <span style="font-size: 0.75rem; color: var(--emerald-success); font-weight: 600;">Coopérative</span>
+        </div>
+
+        <form id="form-agro">
+          <div class="form-group">
+            <label for="agro-parcel-select">Parcelle Cadastrale</label>
+            <select id="agro-parcel-select" required>
+              <option value="">Chargement des parcelles...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="agro-weight-input">Poids Récolté à Date (Tonnes)</label>
+            <input type="number" id="agro-weight-input" min="0.01" step="0.01" placeholder="Ex: 8.45" required>
+          </div>
+
+          <div class="form-group">
+            <label for="agro-notes-input">Qualité / Humidité / Observations</label>
+            <textarea id="agro-notes-input" rows="3" placeholder="Ex: Pesée balance bascule coopérative. Humidité 12.8%..."></textarea>
+          </div>
+
+          <button type="submit" id="btn-submit-agro" class="btn btn-primary">
+            <span>🌾</span> Valider la Pesée Récolte
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- PANEL 3: Queue & Synchronisation -->
+    <section id="tab-queue" class="tab-panel">
+      <div class="bento-card">
+        <div class="card-header">
+          <div class="card-title">🔄 File d'Attente Locale</div>
+          <span id="queue-count-badge" class="badge-pending">0 en attente</span>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+          En zone rurale sans réseau 4G, vos saisies sont stockées dans la base chiffrée locale de votre appareil (IndexedDB). Elles sont transmises automatiquement dès retour du réseau.
+        </p>
+
+        <div id="queue-items-container">
+          <!-- Populated dynamically -->
+        </div>
+
+        <button id="btn-manual-sync" class="btn btn-sync">
+          <span>⚡</span> Synchroniser maintenant
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./db.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

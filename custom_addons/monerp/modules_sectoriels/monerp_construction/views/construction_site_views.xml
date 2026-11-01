@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_monerp_construction_site_tree" model="ir.ui.view">
+        <field name="name">monerp.construction.site.tree</field>
+        <field name="model">monerp.construction.site</field>
+        <field name="arch" type="xml">
+            <list string="Chantiers BTP">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="manager_id"/>
+                <field name="progress_percentage" widget="progressbar"/>
+                <field name="budget_total"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_monerp_construction_site_form" model="ir.ui.view">
+        <field name="name">monerp.construction.site.form</field>
+        <field name="model">monerp.construction.site</field>
+        <field name="arch" type="xml">
+            <form string="Chantier de Construction BTP">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,delivered,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="code" readonly="1"/> - <field name="name" placeholder="Nom du Chantier..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Informations Générales">
+                            <field name="partner_id"/>
+                            <field name="manager_id"/>
+                            <field name="analytic_account_id"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group string="Planning &amp; Financement">
+                            <field name="date_start"/>
+                            <field name="date_end_estimated"/>
+                            <field name="progress_percentage" widget="progressbar"/>
+                            <field name="budget_total"/>
+                            <field name="cost_to_date"/>
+                            <field name="margin_estimated"/>
+                            <field name="monerp_budget_status" widget="badge" decoration-success="monerp_budget_status == 'ok'" decoration-warning="monerp_budget_status == 'warning'" decoration-danger="monerp_budget_status == 'exceeded'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Postes de Travaux &amp; Avancement" name="progress_lines">
+                            <field name="progress_line_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="subcontractor_id"/>
+                                    <field name="allocated_budget"/>
+                                    <field name="progress_percentage" widget="progressbar"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Retenue de Garantie &amp; Caution" name="retention_guarantee">
+                            <group>
+                                <group string="Retenue de Garantie (5% NF P 03-001)">
+                                    <field name="monerp_retention_rate"/>
+                                    <field name="monerp_retention_amount"/>
+                                    <field name="monerp_retention_release_date"/>
+                                </group>
+                                <group string="Garantie Bancaire Substitutive">
+                                    <field name="monerp_bank_guarantee_ref"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Description Chantier" name="description">
+                            <field name="notes" placeholder="Renseignez les spécifications du chantier BTP..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_monerp_construction_site" model="ir.actions.act_window">
+        <field name="name">Chantiers &amp; Projets BTP</field>
+        <field name="res_model">monerp.construction.site</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_monerp_construction_root"
+              name="MonErp Construction (BTP)"
+              parent="monerp_core.menu_monerp_root"
+              action="action_monerp_construction_site"
+              sequence="30"
+              groups="monerp_core.group_monerp_user"/>
+</odoo>

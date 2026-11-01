@@ -1,0 +1,53 @@
+services:
+
+  db:
+    image: postgres:16
+    container_name: monerp-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-monerp}
+      POSTGRES_USER: ${POSTGRES_USER:-odoo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-odoo}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-odoo} -d ${POSTGRES_DB:-monerp}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  odoo:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: monerp-odoo
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${HTTP_PORT:-8069}:8069"
+    environment:
+      HOST: ${POSTGRES_HOST:-db}
+      PORT: ${POSTGRES_PORT:-5432}
+      USER: ${POSTGRES_USER:-odoo}
+      PASSWORD: ${POSTGRES_PASSWORD:-odoo}
+    volumes:
+      # Configuration
+      - ./config:/etc/odoo
+      # Odoo source
+      - ./odoo/odoo-19.0:/opt/odoo
+      # Custom modules
+      - ./custom_addons:/mnt/custom-addons
+      # OCA repositories
+      - ./oca:/mnt/oca
+      # Persistent Odoo data
+      - odoo_data:/var/lib/odoo
+    command:
+      - /opt/odoo/odoo-bin
+      - -c
+      - /etc/odoo/odoo.conf
+
+volumes:
+  postgres_data:
+  odoo_data:

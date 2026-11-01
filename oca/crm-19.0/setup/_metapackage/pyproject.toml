@@ -1,0 +1,28 @@
+[project]
+name = "odoo-addons-oca-crm"
+version = "19.0.20260909.0"
+dependencies = [
+    "odoo-addon-crm_claim==19.0.*",
+    "odoo-addon-crm_claim_code==19.0.*",
+    "odoo-addon-crm_industry==19.0.*",
+    "odoo-addon-crm_lead_code==19.0.*",
+    "odoo-addon-crm_lead_currency==19.0.*",
+    "odoo-addon-crm_lead_to_task==19.0.*",
+    "odoo-addon-crm_lead_vat==19.0.*",
+    "odoo-addon-crm_location==19.0.*",
+    "odoo-addon-crm_lost_reason_required==19.0.*",
+    "odoo-addon-crm_partner_assign==19.0.*",
+    "odoo-addon-crm_phonecall==19.0.*",
+    "odoo-addon-crm_phonecall_summary_predefined==19.0.*",
+    "odoo-addon-crm_project_create==19.0.*",
+    "odoo-addon-crm_project_task==19.0.*",
+    "odoo-addon-crm_stage_probability==19.0.*",
+    "odoo-addon-crm_won_restrict_per_stage==19.0.*",
+    "odoo-addon-marketing_crm_partner==19.0.*",
+    "odoo-addon-srm==19.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 19.0",
+]

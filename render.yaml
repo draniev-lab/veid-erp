@@ -1,0 +1,35 @@
+# ==============================================================================
+# VEID Enterprise - Blueprint Render.com (Infrastructure as Code)
+# Déploiement automatisé en 1 clic sur Render.com
+# ==============================================================================
+
+services:
+  # 1. Application Web VEID Enterprise (Docker)
+  - type: web
+    name: veid-enterprise
+    runtime: docker
+    dockerfilePath: ./docker/Dockerfile
+    plan: starter
+    region: frankfurt
+    healthCheckPath: /web/login
+    disk:
+      name: veid-filestore
+      mountPath: /var/lib/odoo
+      sizeGB: 10
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: veid-postgres
+          property: connectionString
+      - key: ADMIN_PASSWD
+        generateValue: true
+
+# 2. Base de données PostgreSQL Managée
+databases:
+  - name: veid-postgres
+    databaseName: monerp
+    user: odoo
+    plan: starter
+    region: frankfurt

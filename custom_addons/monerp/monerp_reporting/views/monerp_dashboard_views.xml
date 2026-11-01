@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_monerp_executive_dashboard_form" model="ir.ui.view">
+        <field name="name">monerp.executive.dashboard.form</field>
+        <field name="model">monerp.executive.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Tableau de Bord Exécutif MonErp">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Filtres">
+                            <field name="company_id"/>
+                            <field name="period"/>
+                        </group>
+                        <group string="Indicateurs Synthétiques (KPIs)">
+                            <field name="total_sales"/>
+                            <field name="total_purchases"/>
+                            <field name="margin_estimated"/>
+                            <field name="margin_percent" widget="progressbar"/>
+                            <field name="overdue_invoices_amount"/>
+                            <field name="pending_invoices_count"/>
+                            <field name="construction_sites_count"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_monerp_executive_dashboard" model="ir.actions.act_window">
+        <field name="name">Tableau de Bord Exécutif</field>
+        <field name="res_model">monerp.executive.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_monerp_reporting_root"
+              name="Reporting &amp; Dashboards"
+              parent="monerp_core.menu_monerp_root"
+              action="action_monerp_executive_dashboard"
+              sequence="20"
+              groups="monerp_core.group_monerp_user"/>
+</odoo>

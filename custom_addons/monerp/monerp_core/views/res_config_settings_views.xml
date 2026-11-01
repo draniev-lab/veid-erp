@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_monerp" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.monerp</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="100"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="MonErp Core" string="MonErp" name="monerp_core" groups="monerp_core.group_monerp_admin">
+                    <block title="Configuration Globale MonErp" id="monerp_global_config_setting">
+                        <setting string="Édition &amp; Secteur MonErp" help="Définissez l'édition et le secteur d'activité principal de votre entreprise MonErp.">
+                            <field name="monerp_edition"/>
+                            <field name="monerp_sector"/>
+                            <field name="monerp_tagline"/>
+                        </setting>
+                    </block>
+                    <block title="Espaces Métiers &amp; Secteurs VEID" id="veid_spaces_config_setting">
+                        <setting string="Chantiers &amp; BTP" help="Active la gestion des chantiers, des engins et approvisionnements de matériaux.">
+                            <field name="enable_space_btp"/>
+                        </setting>
+                        <setting string="Agro-Industrie" help="Active le suivi des parcelles culturales et campagnes de récolte.">
+                            <field name="enable_space_agri"/>
+                        </setting>
+                        <setting string="Flotte &amp; Convois" help="Active la télématique de flotte et gestion du carburant.">
+                            <field name="enable_space_transport"/>
+                        </setting>
+                        <setting string="Hub Mobile Money" help="Active les passerelles d'encaissement et décaissement T-Money, Flooz, Wave.">
+                            <field name="enable_space_momo"/>
+                        </setting>
+                        <setting string="Registre d'Audit SHA-256" help="Active la piste d'audit cryptographique et scellement immuable des écritures.">
+                            <field name="enable_space_audit"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

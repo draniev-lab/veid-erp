@@ -1,0 +1,21 @@
+{
+  "short_name": "VEID Field",
+  "name": "VEID Enterprise - Opérations Terrain & Mode Déconnecté",
+  "icons": [
+    {
+      "src": "/monerp_core/static/src/img/veid_logo_futuristic.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/monerp_core/static/src/img/veid_logo_futuristic.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#081323",
+  "theme_color": "#081323",
+  "display": "standalone",
+  "orientation": "portrait"
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_analytic_account_form_inherit_monerp" model="ir.ui.view">
+        <field name="name">account.analytic.account.form.inherit.monerp</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='main']" position="inside">
+                <group string="Spécifications MonErp">
+                    <field name="monerp_analytic_type"/>
+                    <field name="monerp_budget_allocated"/>
+                    <field name="monerp_manager_id"/>
+                </group>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Budgets Analytiques &amp; Contrôle" name="budgets">
+                        <field name="budget_ids">
+                            <list editable="bottom">
+                                <field name="name"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
+                                <field name="budget_allocated"/>
+                                <field name="actual_spent"/>
+                                <field name="variance_amount"/>
+                                <field name="budget_utilization_rate" widget="progressbar"/>
+                                <field name="status" widget="badge" decoration-success="status == 'ok'" decoration-warning="status == 'warning'" decoration-danger="status == 'exceeded'"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>

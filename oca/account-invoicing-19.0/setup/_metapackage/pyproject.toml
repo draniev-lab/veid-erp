@@ -1,0 +1,43 @@
+[project]
+name = "odoo-addons-oca-account-invoicing"
+version = "19.0.20260908.0"
+dependencies = [
+    "odoo-addon-account_billing==19.0.*",
+    "odoo-addon-account_global_discount==19.0.*",
+    "odoo-addon-account_invoice_clearing==19.0.*",
+    "odoo-addon-account_invoice_crm_tag==19.0.*",
+    "odoo-addon-account_invoice_fixed_discount==19.0.*",
+    "odoo-addon-account_invoice_pricelist==19.0.*",
+    "odoo-addon-account_invoice_pricelist_sale==19.0.*",
+    "odoo-addon-account_invoice_refund_code==19.0.*",
+    "odoo-addon-account_invoice_refund_link==19.0.*",
+    "odoo-addon-account_invoice_section_sale_order==19.0.*",
+    "odoo-addon-account_invoice_show_currency_rate==19.0.*",
+    "odoo-addon-account_invoice_tax_note==19.0.*",
+    "odoo-addon-account_invoice_transmit_method==19.0.*",
+    "odoo-addon-account_invoice_tree_currency==19.0.*",
+    "odoo-addon-account_invoice_triple_discount==19.0.*",
+    "odoo-addon-account_move_cancel_confirm==19.0.*",
+    "odoo-addon-account_move_pivot_view==19.0.*",
+    "odoo-addon-account_move_substate==19.0.*",
+    "odoo-addon-account_receipt_journal==19.0.*",
+    "odoo-addon-account_tax_fixed_amount_currency==19.0.*",
+    "odoo-addon-account_tax_fixed_amount_multiplier==19.0.*",
+    "odoo-addon-partner_invoicing_mode==19.0.*",
+    "odoo-addon-partner_invoicing_mode_at_shipping==19.0.*",
+    "odoo-addon-portal_account_personal_data_only==19.0.*",
+    "odoo-addon-product_form_account_move_line_link==19.0.*",
+    "odoo-addon-purchase_create_bill_button==19.0.*",
+    "odoo-addon-sale_invoicing_date_selection==19.0.*",
+    "odoo-addon-sale_order_invoicing_grouping_criteria==19.0.*",
+    "odoo-addon-sale_order_invoicing_qty_percentage==19.0.*",
+    "odoo-addon-sale_order_type_whole_delivered_invoiceability==19.0.*",
+    "odoo-addon-sale_order_whole_delivered_invoiceability==19.0.*",
+    "odoo-addon-stock_picking_invoicing==19.0.*",
+    "odoo-addon-stock_picking_return_refund_option==19.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 19.0",
+]

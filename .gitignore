@@ -1,0 +1,33 @@
+# Environment & Secrets
+.env
+*.env.local
+
+# Node & Frontend dependencies
+node_modules/
+playwright-report/
+test-results/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+env/
+venv/
+ENV/
+
+# Scratch & Temporary
+scratch/
+*.log
+*.tmp
+
+# Operating System
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archives & Large files
+fichiers_zip/
+*.zip
+*.tar.gz

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu MonErp -->
+    <menuitem id="menu_monerp_root"
+              name="MonErp"
+              sequence="1"
+              web_icon="monerp_core,static/description/icon.png"
+              groups="group_monerp_user"/>
+
+    <!-- Submenu MonErp Configurations -->
+    <menuitem id="menu_monerp_config"
+              name="Configuration MonErp"
+              parent="menu_monerp_root"
+              sequence="100"
+              groups="group_monerp_admin"/>
+
+    <!-- Action MonErp Settings -->
+    <record id="action_monerp_config_settings" model="ir.actions.act_window">
+        <field name="name">Paramètres MonErp</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'module' : 'monerp_core'}</field>
+    </record>
+
+    <menuitem id="menu_monerp_settings"
+              name="Paramètres Globaux"
+              parent="menu_monerp_config"
+              action="action_monerp_config_settings"
+              sequence="1"
+              groups="group_monerp_admin"/>
+</odoo>

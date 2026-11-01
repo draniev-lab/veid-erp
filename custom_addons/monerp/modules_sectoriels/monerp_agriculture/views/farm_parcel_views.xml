@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_monerp_farm_parcel_tree" model="ir.ui.view">
+        <field name="name">monerp.farm.parcel.tree</field>
+        <field name="model">monerp.farm.parcel</field>
+        <field name="arch" type="xml">
+            <list string="Parcelles Agricoles">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="area_hectares"/>
+                <field name="crop_type"/>
+                <field name="harvest_season"/>
+                <field name="status" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_monerp_farm_parcel_form" model="ir.ui.view">
+        <field name="name">monerp.farm.parcel.form</field>
+        <field name="model">monerp.farm.parcel</field>
+        <field name="arch" type="xml">
+            <form string="Parcelle Agricole MonErp">
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="preparation,sowing,growing,harvesting,fallow"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="code" placeholder="Cadastre..."/> - <field name="name" placeholder="Nom Parcelle..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Spécifications Terrains">
+                            <field name="area_hectares"/>
+                            <field name="crop_type"/>
+                            <field name="harvest_season"/>
+                        </group>
+                        <group string="Analytique &amp; Rendements">
+                            <field name="analytic_account_id"/>
+                            <field name="expected_yield_tonnes"/>
+                            <field name="actual_yield_tonnes"/>
+                            <field name="yield_variance_percent" widget="progressbar"/>
+                            <field name="total_input_cost"/>
+                            <field name="cost_per_hectare"/>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Registre Phytosanitaire &amp; Intrants" name="crop_treatments">
+                            <field name="treatment_ids">
+                                <list editable="bottom">
+                                    <field name="date"/>
+                                    <field name="treatment_type"/>
+                                    <field name="product_id"/>
+                                    <field name="dosage_per_ha"/>
+                                    <field name="total_quantity_used"/>
+                                    <field name="pre_harvest_interval_days"/>
+                                    <field name="cost_total"/>
+                                    <field name="compliance_legal"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Observations Agricoles" name="notes">
+                            <field name="notes" placeholder="Consignez les traitements et historiques de la parcelle..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_monerp_farm_parcel" model="ir.actions.act_window">
+        <field name="name">Parcelles &amp; Cultures Agricoles</field>
+        <field name="res_model">monerp.farm.parcel</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_monerp_agriculture_root"
+              name="MonErp Agriculture"
+              parent="monerp_core.menu_monerp_root"
+              action="action_monerp_farm_parcel"
+              sequence="40"
+              groups="monerp_core.group_monerp_user"/>
+</odoo>

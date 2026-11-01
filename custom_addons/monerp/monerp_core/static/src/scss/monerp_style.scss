@@ -1,0 +1,975 @@
+/* ==========================================================================
+   VEID Enterprise Design System
+   Architecture: OCA web_responsive + VEID Carbon & Futuristic Theme
+   Palette: Navy Carbone (#081323), Electric Blue (#1A56DB), Emerald (#0E9F6E)
+   ========================================================================== */
+
+:root {
+    --veid-primary: #1A56DB;
+    --veid-primary-hover: #1648B8;
+    --veid-primary-light: #EEF4FF;
+    --veid-secondary: #0E9F6E;
+    --veid-dark-bg: #081323;
+    --veid-dark-surface: #111C44;
+    --veid-canvas: #F4F6FB;
+    --veid-card-bg: #FFFFFF;
+    --veid-card-border: #E2E8F0;
+    --veid-font: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --veid-radius-sm: 6px;
+    --veid-radius-md: 10px;
+    --veid-radius-lg: 14px;
+    --veid-radius-pill: 9999px;
+    --veid-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+}
+
+/* 1. Global Typography & Financial Alignments */
+body, .o_web_client {
+    font-family: var(--veid-font) !important;
+    background-color: var(--veid-canvas) !important;
+}
+
+.o_field_monetary, .o_field_float, .o_field_integer {
+    font-variant-numeric: tabular-nums !important;
+    font-weight: 500;
+}
+
+/* 2. Header Supérieur Carbone (#081323) avec VEID-Dark.svg */
+.o_main_navbar {
+    background: var(--veid-dark-bg) !important;
+    border-bottom: 2px solid var(--veid-primary) !important;
+    box-shadow: 0 4px 16px rgba(8, 19, 35, 0.35) !important;
+    min-height: 48px !important;
+}
+
+.o_main_navbar .o_menu_brand {
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    letter-spacing: 0.4px !important;
+    color: #FFFFFF !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+/* Remplacement de l'icône de marque par VEID-Dark.svg */
+.o_main_navbar .o_menu_brand::before {
+    content: '' !important;
+    display: inline-block !important;
+    width: 28px !important;
+    height: 28px !important;
+    background-image: url('/monerp_core/static/src/img/veid_logo_dark.svg') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    border-radius: var(--veid-radius-sm) !important;
+}
+
+/* Remplacement universel des logos résiduels */
+img[src*="odoo_logo"], img[src*="logo.png"].o_org_logo, .o_sub_menu_logo_img {
+    content: url('/monerp_core/static/src/img/veid_logo_dark.svg') !important;
+}
+
+/* Menus de navigation & Dropdowns du Header */
+.o_main_navbar .o_nav_entry,
+.o_main_navbar .dropdown-toggle,
+.o_main_navbar button {
+    color: #E2E8F0 !important;
+    font-weight: 500 !important;
+    border-radius: var(--veid-radius-sm) !important;
+    transition: all 0.15s ease !important;
+}
+
+.o_main_navbar .o_nav_entry:hover,
+.o_main_navbar .dropdown-toggle:hover,
+.o_main_navbar button:hover {
+    color: #FFFFFF !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.o_main_navbar .dropdown-menu {
+    border-radius: var(--veid-radius-md) !important;
+    border: 1px solid var(--veid-card-border) !important;
+    box-shadow: 0 10px 25px -3px rgba(15, 23, 42, 0.15) !important;
+    padding: 6px !important;
+}
+
+.o_main_navbar .dropdown-menu .dropdown-item {
+    border-radius: var(--veid-radius-sm) !important;
+    font-weight: 500 !important;
+    padding: 8px 14px !important;
+    transition: all 0.12s ease !important;
+}
+
+.o_main_navbar .dropdown-menu .dropdown-item:hover {
+    background-color: var(--veid-primary-light) !important;
+    color: var(--veid-primary) !important;
+}
+
+/* 3. Lanceur Bento Grid & App Drawer (web_responsive) */
+.o_apps_menu, .o_app_drawer, .o_menu_searchbar {
+    background: radial-gradient(circle at 50% 20%, var(--veid-dark-surface) 0%, var(--veid-dark-bg) 80%) !important;
+}
+
+.o_apps_menu .o_app, .o_app_drawer .o_app {
+    border-radius: var(--veid-radius-lg) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 16px 12px !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.o_apps_menu .o_app:hover, .o_app_drawer .o_app:hover {
+    transform: translateY(-4px) scale(1.03) !important;
+    background: rgba(26, 86, 219, 0.18) !important;
+    border-color: var(--veid-primary) !important;
+    box-shadow: 0 8px 24px rgba(26, 86, 219, 0.3) !important;
+}
+
+.o_apps_menu .o_caption, .o_app_drawer .o_caption {
+    font-weight: 600 !important;
+    color: #F8FAFC !important;
+    letter-spacing: 0.3px !important;
+    margin-top: 8px !important;
+}
+
+/* 4. Formulaires & Fiches de Travail (Style Stripe) */
+.o_form_view {
+    background-color: var(--veid-canvas) !important;
+}
+
+.o_form_view .o_form_sheet_bg {
+    background-color: transparent !important;
+    padding: 20px !important;
+}
+
+.o_form_view .o_form_sheet {
+    background-color: var(--veid-card-bg) !important;
+    border: 1px solid var(--veid-card-border) !important;
+    border-radius: var(--veid-radius-lg) !important;
+    box-shadow: var(--veid-shadow) !important;
+    padding: 30px 34px !important;
+    margin-bottom: 24px !important;
+}
+
+/* Barre d'action sticky au défilement */
+.o_form_view .o_form_statusbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 50 !important;
+    background: #FFFFFF !important;
+    border: 1px solid var(--veid-card-border) !important;
+    border-radius: var(--veid-radius-md) !important;
+    padding: 8px 16px !important;
+    margin-bottom: 18px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Badges de statuts en pilules modernes */
+.o_form_view .o_statusbar_status {
+    gap: 4px !important;
+}
+
+.o_form_view .o_statusbar_status .o_arrow_button,
+.o_form_view .o_statusbar_status button {
+    border-radius: var(--veid-radius-pill) !important;
+    border: 1px solid var(--veid-card-border) !important;
+    background: #F8FAFC !important;
+    color: #475569 !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    padding: 4px 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    transition: all 0.15s ease !important;
+}
+
+.o_form_view .o_statusbar_status .o_arrow_button.o_arrow_button_current {
+    background: var(--veid-primary-light) !important;
+    color: var(--veid-primary) !important;
+    border-color: var(--veid-primary) !important;
+    font-weight: 700 !important;
+}
+
+/* Champs de saisie */
+.o_form_view input.o_input,
+.o_form_view select.o_input,
+.o_form_view textarea.o_input {
+    border: 1px solid #CBD5E1 !important;
+    border-radius: var(--veid-radius-sm) !important;
+    padding: 7px 11px !important;
+    font-size: 0.88rem !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.o_form_view input.o_input:focus,
+.o_form_view select.o_input:focus,
+.o_form_view textarea.o_input:focus {
+    border-color: var(--veid-primary) !important;
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12) !important;
+    outline: none !important;
+}
+
+/* 5. Vues Listes & Tableaux */
+.o_list_view {
+    background-color: var(--veid-canvas) !important;
+    padding: 12px 18px !important;
+}
+
+.o_list_view .o_list_table {
+    background-color: #FFFFFF !important;
+    border: 1px solid var(--veid-card-border) !important;
+    border-radius: var(--veid-radius-md) !important;
+    box-shadow: var(--veid-shadow) !important;
+}
+
+.o_list_view .o_list_table thead th {
+    background-color: #F8FAFC !important;
+    color: #475569 !important;
+    font-size: 0.76rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-bottom: 1px solid var(--veid-card-border) !important;
+    padding: 10px 14px !important;
+}
+
+.o_list_view .o_list_table tbody tr:hover {
+    background-color: #F8FAFC !important;
+}
+
+/* 6. Boutons Modernes */
+.btn-primary {
+    background-color: var(--veid-primary) !important;
+    border-color: var(--veid-primary) !important;
+    border-radius: var(--veid-radius-sm) !important;
+    font-weight: 600 !important;
+    padding: 6px 14px !important;
+    transition: all 0.15s ease-in-out !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--veid-primary-hover) !important;
+    border-color: var(--veid-primary-hover) !important;
+    box-shadow: 0 4px 10px rgba(26, 86, 219, 0.3) !important;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    border-radius: var(--veid-radius-sm) !important;
+    font-weight: 500 !important;
+    border: 1px solid var(--veid-card-border) !important;
+}
+
+/* 7. Page de Connexion Authentification */
+body.o_home_menu_background, .o_login_layout {
+    background: radial-gradient(circle at top right, var(--veid-dark-surface) 0%, var(--veid-dark-bg) 100%) !important;
+}
+
+.o_login_layout .card {
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45) !important;
+}
+
+.o_login_layout img[src*="logo"] {
+    content: url('/monerp_core/static/src/img/veid_logo_futuristic.png') !important;
+    max-height: 85px !important;
+    object-fit: contain !important;
+}
+
+/* ==========================================================================
+   8. Navigation Latérale Moderne "Rail & Sidebar" VEID Enterprise
+   ========================================================================== */
+
+.o_web_client.veid-sidebar-expanded .o_main_navbar,
+.o_web_client.veid-sidebar-expanded .o_action_manager {
+    margin-left: 240px !important;
+    width: calc(100% - 240px) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.o_web_client.veid-sidebar-collapsed .o_main_navbar,
+.o_web_client.veid-sidebar-collapsed .o_action_manager {
+    margin-left: 64px !important;
+    width: calc(100% - 64px) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.veid-app-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 240px !important;
+    background: #081323 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-shadow: 4px 0 24px rgba(8, 19, 35, 0.4) !important;
+    transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.veid-app-sidebar.collapsed {
+    width: 64px !important;
+}
+
+.veid-sidebar-brand {
+    height: 52px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.veid-brand-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-decoration: none !important;
+}
+
+.veid-brand-icon {
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain !important;
+}
+
+.veid-brand-name {
+    font-weight: 800 !important;
+    font-size: 1.15rem !important;
+    color: #FFFFFF !important;
+    letter-spacing: 0.5px !important;
+}
+
+.veid-app-sidebar.collapsed .veid-brand-name,
+.veid-app-sidebar.collapsed .veid-nav-text,
+.veid-app-sidebar.collapsed .veid-nav-group-header,
+.veid-app-sidebar.collapsed .veid-tenant-info,
+.veid-app-sidebar.collapsed .veid-kbd-hint {
+    display: none !important;
+}
+
+.veid-sidebar-toggle-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #94A3B8 !important;
+    font-size: 1rem !important;
+    cursor: pointer !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    transition: color 0.15s ease !important;
+}
+
+.veid-sidebar-toggle-btn:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.veid-app-sidebar.collapsed .veid-sidebar-toggle-btn i {
+    transform: rotate(180deg) !important;
+}
+
+.veid-sidebar-content {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 12px 8px !important;
+}
+
+.veid-nav-group {
+    margin-bottom: 16px !important;
+}
+
+.veid-nav-group-header {
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    color: #64748B !important;
+    letter-spacing: 0.8px !important;
+    padding: 6px 12px !important;
+    text-transform: uppercase !important;
+}
+
+.veid-nav-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 9px 12px !important;
+    color: #CBD5E1 !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    font-size: 0.86rem !important;
+    font-weight: 500 !important;
+    transition: all 0.15s ease !important;
+    margin-bottom: 2px !important;
+}
+
+.veid-nav-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.veid-nav-link.active {
+    color: #FFFFFF !important;
+    background: #1A56DB !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.35) !important;
+}
+
+.veid-nav-icon {
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.95rem !important;
+    flex-shrink: 0 !important;
+}
+
+.veid-sidebar-footer {
+    padding: 12px 10px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+.veid-quick-cmd-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #94A3B8 !important;
+    border-radius: 8px !important;
+    padding: 7px 10px !important;
+    font-size: 0.8rem !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+}
+
+.veid-quick-cmd-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #FFFFFF !important;
+    border-color: #1A56DB !important;
+}
+
+.veid-kbd-hint {
+    margin-left: auto !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    padding: 2px 5px !important;
+    border-radius: 4px !important;
+    font-size: 0.7rem !important;
+    color: #E2E8F0 !important;
+}
+
+.veid-tenant-card {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 6px 8px !important;
+    border-radius: 6px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.veid-tenant-indicator {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #10B981 !important;
+    box-shadow: 0 0 8px #10B981 !important;
+    flex-shrink: 0 !important;
+}
+
+.veid-tenant-name {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: #F1F5F9 !important;
+}
+
+.veid-tenant-status {
+    font-size: 0.65rem !important;
+    color: #64748B !important;
+}
+
+/* Bouton déclencheur Palette dans la navbar supérieure */
+.veid-command-trigger-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #E2E8F0 !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.8rem !important;
+    margin-left: 14px !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+}
+
+.veid-command-trigger-btn:hover {
+    background: rgba(255, 255, 255, 0.14) !important;
+    border-color: #1A56DB !important;
+}
+
+.veid-trigger-kbd {
+    background: rgba(0, 0, 0, 0.3) !important;
+    color: #94A3B8 !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+}
+
+/* Bouton Apps & Modules dans la navbar supérieure */
+.veid-header-apps-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    background: rgba(26, 86, 219, 0.18) !important;
+    border: 1px solid rgba(26, 86, 219, 0.4) !important;
+    color: #FFFFFF !important;
+    padding: 5px 14px !important;
+    border-radius: var(--veid-radius-sm) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    margin-right: 12px !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+}
+
+.veid-header-apps-btn:hover {
+    background: var(--veid-primary) !important;
+    color: #FFFFFF !important;
+    border-color: var(--veid-primary) !important;
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.35) !important;
+    transform: translateY(-1px) !important;
+}
+
+.veid-header-apps-btn i {
+    font-size: 0.9rem !important;
+    color: #60A5FA !important;
+}
+
+.veid-header-apps-btn:hover i {
+    color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   9. Universal Command Palette (Ctrl+K)
+   ========================================================================== */
+
+.veid-palette-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(8, 19, 35, 0.65) !important;
+    backdrop-filter: blur(8px) !important;
+    z-index: 10050 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding-top: 12vh !important;
+    animation: veidFadeIn 0.15s ease-out !important;
+}
+
+.veid-palette-overlay.d-none {
+    display: none !important;
+}
+
+@keyframes veidFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.veid-palette-card {
+    width: 620px !important;
+    max-width: 92vw !important;
+    background: #FFFFFF !important;
+    border-radius: 14px !important;
+    box-shadow: 0 25px 50px -12px rgba(8, 19, 35, 0.35) !important;
+    border: 1px solid #E2E8F0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.veid-palette-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 14px 18px !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.veid-palette-search-icon {
+    font-size: 1.15rem !important;
+    color: #1A56DB !important;
+}
+
+.veid-palette-input {
+    flex: 1 !important;
+    border: none !important;
+    outline: none !important;
+    font-size: 0.95rem !important;
+    color: #0F172A !important;
+    background: transparent !important;
+}
+
+.veid-palette-input::placeholder {
+    color: #94A3B8 !important;
+}
+
+.veid-palette-shortcut-badge {
+    background: #F1F5F9 !important;
+    color: #64748B !important;
+    padding: 3px 6px !important;
+    border-radius: 4px !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+}
+
+.veid-palette-results {
+    max-height: 380px !important;
+    overflow-y: auto !important;
+    padding: 8px !important;
+}
+
+.veid-palette-group-title {
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    color: #64748B !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    padding: 8px 12px 4px !important;
+}
+
+.veid-palette-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 9px 12px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.1s ease !important;
+}
+
+.veid-palette-item:hover,
+.veid-palette-item.selected {
+    background: #EEF4FF !important;
+}
+
+.veid-palette-item-icon {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 6px !important;
+    background: #F8FAFC !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #1A56DB !important;
+    font-size: 0.9rem !important;
+    flex-shrink: 0 !important;
+}
+
+.veid-palette-item.selected .veid-palette-item-icon {
+    background: #1A56DB !important;
+    color: #FFFFFF !important;
+}
+
+.veid-palette-item-content {
+    flex: 1 !important;
+}
+
+.veid-palette-item-title {
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    color: #0F172A !important;
+}
+
+.veid-palette-item-cat {
+    font-size: 0.72rem !important;
+    color: #64748B !important;
+}
+
+.veid-palette-item-action {
+    color: #94A3B8 !important;
+    font-size: 0.8rem !important;
+}
+
+.veid-palette-footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 10px 16px !important;
+    background: #F8FAFC !important;
+    border-top: 1px solid #E2E8F0 !important;
+}
+
+.veid-palette-keys {
+    display: flex !important;
+    gap: 12px !important;
+    font-size: 0.72rem !important;
+    color: #64748B !important;
+}
+
+.veid-palette-keys kbd {
+    background: #FFFFFF !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 3px !important;
+    padding: 1px 4px !important;
+    font-size: 0.68rem !important;
+    color: #334155 !important;
+}
+
+.veid-badge-tier {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    color: #1A56DB !important;
+    background: #EEF4FF !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+}
+
+/* ==========================================================================
+   10. Formulaires Full-Canvas & Vues Fiches Asymétriques
+   ========================================================================== */
+
+/* Élimination de la boîte "feuille de papier A4" */
+.o_form_view .o_form_sheet_bg {
+    background: transparent !important;
+    padding: 16px 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.o_form_view .o_form_sheet {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 12px !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+    padding: 24px 30px !important;
+}
+
+/* En-tête de Statut / Workflow façon pills modernes avec pulsation */
+.o_form_view .o_form_statusbar {
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    padding: 8px 16px !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Remplacement des boutons en flèches par des pills arrondies avec jalon actif pulsant */
+.o_form_view .o_statusbar_status .o_arrow_button {
+    border-radius: 20px !important;
+    border: 1px solid #E2E8F0 !important;
+    padding: 4px 14px !important;
+    margin: 0 3px !important;
+}
+
+.o_form_view .o_statusbar_status .o_arrow_button.o_arrow_button_current {
+    position: relative !important;
+    background: #EEF4FF !important;
+    color: #1A56DB !important;
+    border-color: #1A56DB !important;
+    font-weight: 700 !important;
+    padding-left: 22px !important;
+}
+
+.o_form_view .o_statusbar_status .o_arrow_button.o_arrow_button_current::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 50% !important;
+    background: #1A56DB !important;
+    box-shadow: 0 0 0 0 rgba(26, 86, 219, 0.6) !important;
+    animation: veidPillPulse 1.8s infinite !important;
+}
+
+@keyframes veidPillPulse {
+    0% { box-shadow: 0 0 0 0 rgba(26, 86, 219, 0.6); }
+    70% { box-shadow: 0 0 0 6px rgba(26, 86, 219, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(26, 86, 219, 0); }
+}
+
+/* Lanceur d'applications Bento Grid dans la navbar, stylisé aux couleurs VEID */
+.o_navbar_apps_menu, .o_menu_toggle {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.o_grid_apps_menu__button, .o_navbar_apps_menu button {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #E2E8F0 !important;
+    padding: 6px 12px !important;
+    border-radius: var(--veid-radius-sm) !important;
+    transition: all 0.15s ease !important;
+    margin-right: 6px !important;
+    font-size: 0.95rem !important;
+}
+
+.o_grid_apps_menu__button:hover, .o_navbar_apps_menu button:hover {
+    background: rgba(26, 86, 219, 0.25) !important;
+    color: #FFFFFF !important;
+    border-color: var(--veid-primary) !important;
+}
+
+/* ==========================================================================
+   11. Data Grid Haute Précision & Tableaux
+   ========================================================================== */
+
+.o_list_view .o_list_table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
+
+.o_list_view .o_list_table thead th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+    background: rgba(248, 250, 252, 0.96) !important;
+    backdrop-filter: blur(6px) !important;
+    font-size: 0.74rem !important;
+    font-weight: 700 !important;
+    color: #475569 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.6px !important;
+    padding: 12px 14px !important;
+    border-bottom: 2px solid #E2E8F0 !important;
+}
+
+.o_list_view .o_list_table tbody td {
+    padding: 10px 14px !important;
+    font-size: 0.88rem !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    vertical-align: middle !important;
+}
+
+.o_list_view .o_list_table tbody tr {
+    transition: background-color 0.1s ease !important;
+}
+
+.o_list_view .o_list_table tbody tr:hover {
+    background-color: #F8FAFC !important;
+}
+
+/* ==========================================================================
+   12. Two-Pane Modern Inspector (Full-Canvas + Lateral Inspector)
+   ========================================================================== */
+@media (min-width: 1200px) {
+    .o_form_view {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: stretch !important;
+        min-height: calc(100vh - 48px) !important;
+    }
+    .o_form_view .o_form_sheet_bg {
+        flex: 1 1 68% !important;
+        min-width: 0 !important;
+        padding: 20px 28px !important;
+    }
+    .o_form_view .o_FormRenderer_chatterContainer,
+    .o_form_view .oe_chatter {
+        flex: 0 0 32% !important;
+        max-width: 440px !important;
+        min-width: 320px !important;
+        background: #FFFFFF !important;
+        border-left: 1px solid #E2E8F0 !important;
+        padding: 20px 24px !important;
+        overflow-y: auto !important;
+        box-shadow: -4px 0 16px rgba(15, 23, 42, 0.03) !important;
+    }
+}
+
+/* ==========================================================================
+   13. Ergonomie Mobile & Mode Terrain / PWA (Branch 6)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .o_web_client.veid-sidebar-expanded .o_main_navbar,
+    .o_web_client.veid-sidebar-expanded .o_action_manager,
+    .o_web_client.veid-sidebar-collapsed .o_main_navbar,
+    .o_web_client.veid-sidebar-collapsed .o_action_manager {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding-bottom: 64px !important;
+    }
+
+    .veid-app-sidebar {
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 60px !important;
+        flex-direction: row !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-right: none !important;
+        box-shadow: 0 -4px 20px rgba(8, 19, 35, 0.45) !important;
+        z-index: 1050 !important;
+    }
+
+    .veid-sidebar-brand,
+    .veid-sidebar-footer,
+    .veid-nav-group-header {
+        display: none !important;
+    }
+
+    .veid-sidebar-content {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-around !important;
+        align-items: center !important;
+        padding: 0 6px !important;
+        overflow-y: hidden !important;
+        overflow-x: auto !important;
+        width: 100% !important;
+    }
+
+    .veid-nav-group {
+        display: flex !important;
+        margin-bottom: 0 !important;
+    }
+
+    .veid-nav-group-items {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 6px !important;
+    }
+
+    .veid-nav-link {
+        flex-direction: column !important;
+        gap: 2px !important;
+        padding: 6px 10px !important;
+        min-width: 50px !important;
+        min-height: 46px !important;
+        justify-content: center !important;
+        text-align: center !important;
+        border-radius: 6px !important;
+    }
+
+    .veid-nav-icon {
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 1rem !important;
+    }
+
+    .veid-nav-text {
+        font-size: 0.65rem !important;
+        display: block !important;
+        white-space: nowrap !important;
+    }
+}
+

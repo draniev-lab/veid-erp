@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form_monerp" model="ir.ui.view">
+        <field name="name">res.company.form.monerp</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Profil MonErp" name="monerp_profile">
+                    <group>
+                        <group string="Caractéristiques MonErp">
+                            <field name="monerp_edition"/>
+                            <field name="monerp_sector"/>
+                            <field name="monerp_tagline"/>
+                        </group>
+                        <group string="Espaces Métiers Activés">
+                            <field name="enable_space_btp"/>
+                            <field name="enable_space_agri"/>
+                            <field name="enable_space_transport"/>
+                            <field name="enable_space_momo"/>
+                            <field name="enable_space_audit"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

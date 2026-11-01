@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_monerp_construction_site,access.monerp.construction.site,model_monerp_construction_site,monerp_core.group_monerp_user,1,1,1,1
+access_monerp_construction_progress_line,access.monerp.construction.progress.line,model_monerp_construction_progress_line,monerp_core.group_monerp_user,1,1,1,1
+

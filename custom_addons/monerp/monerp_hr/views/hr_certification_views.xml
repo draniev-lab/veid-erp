@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_monerp_hr_certification_tree" model="ir.ui.view">
+        <field name="name">monerp.hr.certification.tree</field>
+        <field name="model">monerp.hr.certification</field>
+        <field name="arch" type="xml">
+            <list string="Habilitations &amp; Permis Sécurité">
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="certification_type"/>
+                <field name="certificate_ref"/>
+                <field name="issue_date"/>
+                <field name="expiration_date"/>
+                <field name="is_expired" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_monerp_hr_certification_form" model="ir.ui.view">
+        <field name="name">monerp.hr.certification.form</field>
+        <field name="model">monerp.hr.certification</field>
+        <field name="arch" type="xml">
+            <form string="Habilitation Sécurité Employé">
+                <sheet>
+                    <group>
+                        <group string="Employé &amp; Habilitation">
+                            <field name="employee_id"/>
+                            <field name="name"/>
+                            <field name="certification_type"/>
+                            <field name="certificate_ref"/>
+                        </group>
+                        <group string="Validité &amp; Dates">
+                            <field name="issue_date"/>
+                            <field name="expiration_date"/>
+                            <field name="is_expired"/>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                    <group string="Notes &amp; Organisme">
+                        <field name="notes" placeholder="Organisme formateur, référence du procès-verbal..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

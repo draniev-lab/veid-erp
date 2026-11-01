@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_monerp_transport_trip_tree" model="ir.ui.view">
+        <field name="name">monerp.transport.trip.tree</field>
+        <field name="model">monerp.transport.trip</field>
+        <field name="arch" type="xml">
+            <list string="Trajets de Transport">
+                <field name="name"/>
+                <field name="vehicle_plate"/>
+                <field name="driver_id"/>
+                <field name="origin_city"/>
+                <field name="destination_city"/>
+                <field name="distance_km"/>
+                <field name="trip_price_billed"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_monerp_transport_trip_form" model="ir.ui.view">
+        <field name="name">monerp.transport.trip.form</field>
+        <field name="model">monerp.transport.trip</field>
+        <field name="arch" type="xml">
+            <form string="Ordre de Transport MonErp">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,loading,in_transit,unloading,completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="TRIP-001..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Affectation &amp; Véhicule">
+                            <field name="driver_id"/>
+                            <field name="vehicle_plate"/>
+                            <field name="analytic_account_id"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group string="Itinéraire &amp; Dates">
+                            <field name="origin_city"/>
+                            <field name="destination_city"/>
+                            <field name="date_departure"/>
+                            <field name="date_arrival_estimated"/>
+                            <field name="date_arrival_actual"/>
+                        </group>
+                    </group>
+                    <group string="Coûts, Consommation &amp; Calculateur Cost-Per-KM">
+                        <group string="Postes de Dépenses">
+                            <field name="distance_km"/>
+                            <field name="monerp_fuel_liters"/>
+                            <field name="fuel_cost"/>
+                            <field name="toll_cost"/>
+                            <field name="monerp_driver_cost"/>
+                        </group>
+                        <group string="Analyse de Rentabilité &amp; Coût/Km">
+                            <field name="monerp_total_trip_cost"/>
+                            <field name="monerp_cost_per_km"/>
+                            <field name="monerp_fuel_consumption_l_100"/>
+                            <field name="trip_price_billed"/>
+                            <field name="monerp_trip_margin"/>
+                            <field name="monerp_trip_margin_percent" widget="progressbar"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Remarques Trajet" name="notes">
+                            <field name="notes" placeholder="Notes de route, incidents ou consignes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_monerp_transport_trip" model="ir.actions.act_window">
+        <field name="name">Trajets &amp; Ordres de Transport</field>
+        <field name="res_model">monerp.transport.trip</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_monerp_transport_root"
+              name="MonErp Transport"
+              parent="monerp_core.menu_monerp_root"
+              action="action_monerp_transport_trip"
+              sequence="50"
+              groups="monerp_core.group_monerp_user"/>
+</odoo>

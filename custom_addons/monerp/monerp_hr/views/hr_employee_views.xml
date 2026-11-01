@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form_inherit_monerp_cert" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.monerp.cert</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Profil MonErp RH" name="monerp_hr_profile">
+                    <group>
+                        <group string="Matricule &amp; Niveaux">
+                            <field name="monerp_employee_id_code"/>
+                            <field name="monerp_expense_approval_limit"/>
+                            <field name="monerp_skill_level"/>
+                        </group>
+                    </group>
+                    <separator string="Habilitations &amp; Permis Sécurité"/>
+                    <field name="monerp_certification_ids"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+

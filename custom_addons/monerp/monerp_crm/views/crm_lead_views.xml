@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_lead_view_form_inherit_monerp" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.monerp</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_create_monerp_quotation" string="Générer Devis MonErp" type="object" class="btn-primary" groups="monerp_core.group_monerp_user"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Qualification MonErp" name="monerp_qualification">
+                    <group>
+                        <group string="Indicateurs de Vente &amp; AI">
+                            <field name="monerp_prospect_score" widget="progressbar"/>
+                            <field name="monerp_win_probability_ai" widget="progressbar"/>
+                            <field name="monerp_risk_level" widget="badge" decoration-success="monerp_risk_level == 'low'" decoration-warning="monerp_risk_level == 'medium'" decoration-danger="monerp_risk_level == 'high'"/>
+                            <field name="monerp_decision_timeline"/>
+                            <field name="monerp_budget_estimated"/>
+                        </group>
+                        <group string="Analyse Concurrentielle &amp; Stratégique">
+                            <field name="monerp_competitors" placeholder="Ex: Concurrent A, Solution B..."/>
+                            <field name="monerp_notes_commerciales" placeholder="Ajoutez ici les critères d'évaluation MonErp..."/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

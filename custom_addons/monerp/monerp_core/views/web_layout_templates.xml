@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. Override Brand Promotion Banner -->
+    <template id="monerp_brand_promotion" inherit_id="web.brand_promotion" name="VEID Brand Promotion" priority="99">
+        <xpath expr="//div[hasclass('o_brand_promotion')]" position="replace">
+            <div class="o_brand_promotion text-center py-2 bg-dark text-white-50 small">
+                <span>Propulsé par </span>
+                <a href="https://veid.com" target="_blank" class="fw-bold text-white text-decoration-none">
+                    <img src="/monerp_core/static/src/img/veid_logo_dark.svg" alt="VEID Logo" style="height: 18px; margin-right: 4px; vertical-align: text-bottom;"/>
+                    VEID Enterprise
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- 2. Override Brand Promotion Message -->
+    <template id="monerp_brand_promotion_message" inherit_id="web.brand_promotion_message" name="VEID Brand Promotion Message" priority="99">
+        <xpath expr="//t" position="replace">
+            <span>Propulsé par <a target="_blank" href="https://veid.com" class="fw-bold text-decoration-none">VEID Enterprise</a></span>
+        </xpath>
+    </template>
+
+    <!-- 3. Override Login Layout Branding with Futuristic Logo -->
+    <template id="monerp_login_layout" inherit_id="web.login" name="VEID Login Layout Branding" priority="99">
+        <xpath expr="//form" position="before">
+            <div class="text-center pt-2 pb-4">
+                <a href="/" class="d-inline-block">
+                    <img src="/monerp_core/static/src/img/veid_logo_futuristic.png" alt="VEID Enterprise" style="max-height: 90px; width: auto; object-fit: contain; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.2));"/>
+                </a>
+                <h4 class="mt-3 fw-bold" style="color: #0F172A; letter-spacing: -0.3px;">VEID Enterprise</h4>
+                <p class="text-muted small">Plateforme Intégrée de Gestion &amp; Pilotage Métier</p>
+            </div>
+        </xpath>
+    </template>
+</odoo>
