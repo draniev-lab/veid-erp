@@ -1,6 +1,6 @@
 # ==============================================================================
-# VEID Enterprise - Blueprint Render.com (Infrastructure as Code)
-# Déploiement automatisé en 1 clic sur Render.com
+# VEID Enterprise - Blueprint Render.com (Plan Gratuit)
+# Déploiement optimisé pour l'offre Free Tier de Render
 # ==============================================================================
 
 services:
@@ -9,13 +9,9 @@ services:
     name: veid-enterprise
     runtime: docker
     dockerfilePath: ./docker/Dockerfile
-    plan: starter
+    plan: free
     region: frankfurt
     healthCheckPath: /web/login
-    disk:
-      name: veid-filestore
-      mountPath: /var/lib/odoo
-      sizeGB: 10
     envVars:
       - key: PORT
         value: 10000
@@ -26,10 +22,10 @@ services:
       - key: ADMIN_PASSWD
         generateValue: true
 
-# 2. Base de données PostgreSQL Managée
+# 2. Base de données PostgreSQL Managée (Free Tier - 1GB max)
 databases:
   - name: veid-postgres
     databaseName: monerp
     user: odoo
-    plan: starter
+    plan: free
     region: frankfurt
