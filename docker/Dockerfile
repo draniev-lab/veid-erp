@@ -46,9 +46,10 @@ COPY custom_addons /mnt/custom-addons
 COPY oca /mnt/oca
 COPY config /etc/odoo
 
-# Configuration de l'Entrypoint
+# Configuration de l'Entrypoint et permissions
 COPY docker/entrypoint.sh /docker/entrypoint.sh
 RUN chmod +x /docker/entrypoint.sh && \
+    chmod +x /opt/odoo/odoo-bin && \
     mkdir -p /var/lib/odoo && \
     chmod -R 777 /var/lib/odoo
 
