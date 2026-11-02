@@ -40,13 +40,6 @@ echo " Base de données : $DB_USER@$DB_HOST:$DB_PORT/$DB_NAME"
 echo "=================================================="
 
 # Démarrage officiel d'Odoo / VEID
-# Note: Si la base vient d'être créée sur Render, initialise automatiquement le module base
-INIT_FLAG=""
-if [ -n "${DATABASE_URL:-}" ]; then
-    echo "[VEID] Vérification de l'initialisation de la base distante..."
-    INIT_FLAG="-i base,monerp_core"
-fi
-
 exec /opt/odoo/odoo-bin \
     -c /etc/odoo/odoo.conf \
     --http-port="$HTTP_PORT" \
@@ -56,5 +49,4 @@ exec /opt/odoo/odoo-bin \
     --db_password="$DB_PASSWORD" \
     -d "$DB_NAME" \
     --proxy-mode \
-    $INIT_FLAG \
     "$@"
