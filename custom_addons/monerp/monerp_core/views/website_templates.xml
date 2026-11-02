@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Custom Navbar Logo Override when website is installed -->
+        <template id="monerp_website_header_logo" inherit_id="website.placeholder_header_brand" name="VEID Navbar Brand Logo" priority="99">
+            <xpath expr="//*[@id='o_fake_navbar_brand']" position="replace">
+                <a data-name="Navbar Logo" href="/" t-attf-class="navbar-brand logo #{_link_class}" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <img src="/monerp_core/static/src/img/veid_logo_geometric.svg" alt="VEID Enterprise" style="height: 42px; width: auto; max-width: 200px; object-fit: contain;"/>
+                </a>
+            </xpath>
+        </template>
+    </data>
+</odoo>

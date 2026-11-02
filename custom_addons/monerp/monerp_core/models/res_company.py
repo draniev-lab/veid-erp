@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models
+import os
+import base64
+from odoo import fields, models, api
 
 
 class ResCompany(models.Model):
@@ -55,3 +57,30 @@ class ResCompany(models.Model):
         default=True,
         help="Active l'horodatage cryptographique et le scellement immuable des écritures."
     )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        companies = super().create(vals_list)
+        for company in companies:
+            company._ensure_veid_branding()
+        return companies
+
+    def _ensure_veid_branding(self):
+        """Affecte automatiquement le logo et le favicon VEID à la société."""
+        logo_path = os.path.join(
+            os.path.dirname(os.path.dirname(__file__)),
+            'static', 'src', 'img', 'veid_logo_futuristic.png'
+        )
+        if os.path.exists(logo_path):
+            try:
+                with open(logo_path, 'rb') as f:
+                    logo_data = base64.b64encode(f.read())
+                    vals = {}
+                    if not self.logo or self.name == 'My Company' or 'Odoo' in str(self.name):
+                        vals['logo'] = logo_data
+                    if 'name' not in vals and (self.name == 'My Company' or 'Odoo' in str(self.name)):
+                        vals['name'] = 'VEID Enterprise'
+                    if vals:
+                        self.write(vals)
+            except Exception:
+                pass
